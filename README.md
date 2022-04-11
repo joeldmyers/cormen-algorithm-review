@@ -1,3 +1,3 @@
 # cormen-algorithm-review
 
-Review of CLRS
+Review of CLRS.
