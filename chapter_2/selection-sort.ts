@@ -1,5 +1,5 @@
 /**
- * Selection sort looks for the lowest number and adds that to the left, then it goes one over and repeates
+ * Selection sort looks for the lowest number and adds that to the left, then it goes to the right and repeats
  * until it's done.
  */
 export const selectionSort = (nums: number[]): number[] => {
