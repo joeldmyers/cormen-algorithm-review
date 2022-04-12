@@ -9,7 +9,7 @@ export const insertionSort = (numbers: number[]): number[] => {
     pointerDividingSortedFromUnsorted < numbers.length;
     pointerDividingSortedFromUnsorted++
   ) {
-    // insert currentNum into the sorted sequence to the left
+    // insert currentlySelectedNumberToSort into the sorted sequence to the left
     const currentlySelectedNumberToSort =
       numbers[pointerDividingSortedFromUnsorted];
 
@@ -55,7 +55,7 @@ export const insertionSortDecreasing = (numbers: number[]): number[] => {
     pointerDividingSortedFromUnsorted < numbers.length;
     pointerDividingSortedFromUnsorted++
   ) {
-    // insert currentNum into the sorted sequence to the left
+    // insert currentlySelectedNumberToSort into the sorted sequence to the left
     const currentlySelectedNumberToSort =
       numbers[pointerDividingSortedFromUnsorted];
 
@@ -73,9 +73,9 @@ export const insertionSortDecreasing = (numbers: number[]): number[] => {
        * It only continues (does anything) if
        * the number in the sorted array we are looking at is greater than
        * the number we are pulling over from the unsorted numbers
-       * if the current number is greater than or equal to the sorted number we are examining,
+       * if the current number is less than or equal to the sorted number we are examining,
        * we leave it where it is (to the right)
-       * if it's less than, we swap it with the one to the left of it and move over one and go again.
+       * if it's greater than, we swap it with the one to the left of it and move over one and go again.
        */
 
       numbers[indexOfCurrentSortedItemWeAreLookingAt + 1] =
