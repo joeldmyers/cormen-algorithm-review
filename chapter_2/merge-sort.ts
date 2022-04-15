@@ -11,7 +11,7 @@ export const mergeSort = (nums: number[]): number[] => {
 
   const rightNums = mergeSort(nums.slice(midIndex, nums.length));
 
-  // merge - need to write a merge function
+  // merge
 
   return mergeSortedArrays(leftNums, rightNums);
 };
