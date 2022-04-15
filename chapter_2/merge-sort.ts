@@ -14,10 +14,14 @@ export const mergeSort = (nums: number[]): number[] => {
   // merge
 
   return mergeSortedArrays(sortedLeftNums, sortedRightNums);
+
+  // Note that there is a way to be more efficient with this, one could do
+  // return mergeSortedArrays(mergeSort(sortedLeftNums),mergeSort(sortedRightNums))
+  // however, I find this less readable.
 };
 
 const splitArrayInTwo = (arr: number[]): [number[], number[]] => {
-  const midIndex = Math.floor(arr.length / 2);
+  const midIndex = arr.length / 2;
 
   const leftSide = arr.slice(0, midIndex);
 
