@@ -25,6 +25,7 @@ const splitArrayInTwo = (arr: number[]): [number[], number[]] => {
 
   return [leftSide, rightSide];
 };
+
 const mergeSortedArrays = (
   sortedArray1: number[],
   sortedArray2: number[]
