@@ -5,17 +5,26 @@ export const mergeSort = (nums: number[]): number[] => {
   }
 
   // divide & conquer
-  const midIndex = Math.floor(nums.length / 2);
+  const [unsortedLeftNums, unsortedRightNums] = splitArrayInTwo(nums);
 
-  const leftNums = mergeSort(nums.slice(0, midIndex));
+  const sortedLeftNums = mergeSort(unsortedLeftNums);
 
-  const rightNums = mergeSort(nums.slice(midIndex, nums.length));
+  const sortedRightNums = mergeSort(unsortedRightNums);
 
   // merge
 
-  return mergeSortedArrays(leftNums, rightNums);
+  return mergeSortedArrays(sortedLeftNums, sortedRightNums);
 };
 
+const splitArrayInTwo = (arr: number[]): [number[], number[]] => {
+  const midIndex = Math.floor(arr.length / 2);
+
+  const leftSide = arr.slice(0, midIndex);
+
+  const rightSide = arr.slice(midIndex, arr.length);
+
+  return [leftSide, rightSide];
+};
 const mergeSortedArrays = (
   sortedArray1: number[],
   sortedArray2: number[]
