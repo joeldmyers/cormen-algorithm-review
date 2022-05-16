@@ -8,6 +8,8 @@ export const findMaxSubarrayLinear = (nums: number[]): MaxSubarrayResult => {
 
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] > currentSum + nums[i]) {
+      // start over at current spot because this single item is now
+      // the largest subarray so far.
       currentSum = nums[i];
       leftPointer = i;
     } else {
@@ -15,6 +17,7 @@ export const findMaxSubarrayLinear = (nums: number[]): MaxSubarrayResult => {
     }
 
     if (currentSum > maxSum) {
+      // this is now the max
       maxSum = currentSum;
       rightPointer = i;
     }
