@@ -1,5 +1,6 @@
 import { findMaximumSubarray } from "../maximum-subarray";
-import { maxSubarrayBruteForce } from "../maximum-subarray-brute-force";
+import { findMaxSubarrayBruteForce } from "../maximum-subarray-brute-force";
+import { findMaxSubarrayLinear } from "../maximum-subarray-linear";
 
 it("finds the maximum subarray", () => {
   const priceChangeData = [
@@ -20,5 +21,15 @@ it("finds the maximum subarray using brute force", () => {
 
   const expectedResult = { low: 7, high: 10, sum: 43 };
 
-  expect(maxSubarrayBruteForce(priceChangeData)).toEqual(expectedResult);
+  expect(findMaxSubarrayBruteForce(priceChangeData)).toEqual(expectedResult);
+});
+
+it("finds the maximum subarray in linear time", () => {
+  const priceChangeData = [
+    13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7,
+  ];
+
+  const expectedResult = { low: 7, high: 10, sum: 43 };
+
+  expect(findMaxSubarrayLinear(priceChangeData)).toEqual(expectedResult);
 });

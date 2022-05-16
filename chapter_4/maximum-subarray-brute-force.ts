@@ -1,6 +1,8 @@
 import { MaxSubarrayResult } from "./maximum-subarray";
 
-export const maxSubarrayBruteForce = (nums: number[]): MaxSubarrayResult => {
+export const findMaxSubarrayBruteForce = (
+  nums: number[]
+): MaxSubarrayResult => {
   let maxSum = Number.NEGATIVE_INFINITY;
   let winningLeftIndex, winningRightIndex;
 
