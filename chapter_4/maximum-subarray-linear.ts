@@ -1,5 +1,6 @@
 import { MaxSubarrayResult } from "./maximum-subarray";
 
+// note, this is also known as Kadane's algorithm
 export const findMaxSubarrayLinear = (nums: number[]): MaxSubarrayResult => {
   let maxSum = Number.NEGATIVE_INFINITY;
   let currentSum = 0;
