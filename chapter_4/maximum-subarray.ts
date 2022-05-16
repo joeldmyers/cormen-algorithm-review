@@ -1,3 +1,9 @@
+type MaxSubarrayResult = {
+  low: number;
+  high: number;
+  sum: number;
+};
+
 /**
  * Input: price of a stock for each day
  * Output: you can buy one time and sell one time, and want to maximize profit.
@@ -14,12 +20,6 @@
  * Then the max subarray must be either entirely in left subarray, entirely in right, or crossing the midpoint.
  */
 
-type MaxSubarrayResult = {
-  low: number;
-  high: number;
-  sum: number;
-};
-
 export const findMaximumSubarray = (
   nums: number[],
   low: number,
@@ -31,12 +31,9 @@ export const findMaximumSubarray = (
   }
 
   let mid = Math.floor((low + high) / 2);
-  console.log("here", low, mid, high);
 
   const leftResult = findMaximumSubarray(nums, low, mid);
-  console.log("after left result", leftResult);
   const rightResult = findMaximumSubarray(nums, mid + 1, high);
-  console.log("after right result", rightResult);
   const crossingResult = findMaxCrossingSubarray(nums, low, mid, high);
 
   if (
