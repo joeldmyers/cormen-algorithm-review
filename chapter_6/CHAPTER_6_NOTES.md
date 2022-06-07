@@ -1,6 +1,3 @@
 # Sorting
 
-Insertion Sort -> O n ^ 2
-Merge Sort -> O n log(n)
-Heap Sort -> O n log(n)
-Quick Sort -> worst case is O n ^ 2 but expected is O n log(n)
+![IMG_2204](https://user-images.githubusercontent.com/4838984/172373266-021ffd50-b5e4-4279-9ce1-4d7632fbc202.jpg)
