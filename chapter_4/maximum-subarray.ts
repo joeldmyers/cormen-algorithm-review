@@ -1,4 +1,4 @@
-type MaxSubarrayResult = {
+export type MaxSubarrayResult = {
   low: number;
   high: number;
   sum: number;

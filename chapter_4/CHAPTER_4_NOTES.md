@@ -23,3 +23,7 @@ dot product.
 
 the solution is then
 [[58, 64], [139, 154]]
+
+## Strassen method
+
+Probably going to skip implementing this as it's a bit specific. [fill in notes later]
