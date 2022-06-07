@@ -26,4 +26,4 @@ the solution is then
 
 ## Strassen method
 
-Probably going to skip implementing this as it's a bit specific. [fill in notes later]
+Probably going to skip implementing this as it's a bit specific. But it's for a more efficient matrix multiplication.
