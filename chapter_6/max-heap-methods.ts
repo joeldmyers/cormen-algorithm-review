@@ -8,19 +8,23 @@ const getRightChildIndex = (i: number) => 2 * i + 1;
  * make sure that it obeys the rules of max heap.
  * p. 154.
  */
-export const maxHeapify = (array: number[], i: number) => {
+export const maxHeapify = (
+  array: number[],
+  i: number,
+  heapLength: number = array.length
+) => {
   const leftChildIndex = getLeftChildIndex(i);
   const rightChildIndex = getRightChildIndex(i);
 
   let largest;
 
-  if (leftChildIndex <= array.length && array[leftChildIndex] > array[i]) {
+  if (leftChildIndex <= heapLength && array[leftChildIndex] > array[i]) {
     largest = leftChildIndex;
   } else {
     largest = i;
   }
 
-  if (rightChildIndex <= array.length && array[rightChildIndex] > array[i]) {
+  if (rightChildIndex <= heapLength && array[rightChildIndex] > array[i]) {
     largest = rightChildIndex;
   }
 
@@ -43,4 +47,17 @@ export const buildMaxHeap = (array: number[]) => {
   for (let i = array.length / 2; i >= 0; i--) {
     maxHeapify(array, i);
   }
+
+  return array;
+};
+
+export const heapSort = (array: number[]): number[] => {
+  const maxHeapArray = buildMaxHeap(array);
+  let maxHeapLength = maxHeapArray.length;
+
+  for (let i = maxHeapArray.length; i >= 1; i--) {
+    maxHeapify(maxHeapArray, 1, maxHeapLength--);
+  }
+
+  return maxHeapArray;
 };
