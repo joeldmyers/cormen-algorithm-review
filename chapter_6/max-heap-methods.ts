@@ -14,8 +14,7 @@ export const maxHeapify = (
   array: number[],
   i: number,
   heapLength: number = array.length
-) => {
-  console.log("in max heapify", heapLength);
+): number[] => {
   const leftChildIndex = getLeftChildIndex(i);
   const rightChildIndex = getRightChildIndex(i);
 
