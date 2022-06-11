@@ -97,5 +97,9 @@ const findMaxCrossingSubarray = (
   }
 
   const totalMaxSum = leftSum + rightSum;
-  return { maxLeftIndex, maxRightIndex, totalMaxSum };
+  return {
+    maxLeftIndex: maxLeftIndex || 0,
+    maxRightIndex: maxRightIndex || 0,
+    totalMaxSum,
+  };
 };
