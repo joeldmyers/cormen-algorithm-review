@@ -1,6 +1,6 @@
-const getLeftChildIndex = (i: number) => 2 * i;
+export const getLeftChildIndex = (i: number) => 2 * i + 1;
 
-const getRightChildIndex = (i: number) => 2 * i + 1;
+export const getRightChildIndex = (i: number) => 2 * i + 2;
 
 /**
  * This runs in O log n time (also O of h) and is the key to maintaining the max heap property.
@@ -13,28 +13,33 @@ export const maxHeapify = (
   i: number,
   heapLength: number = array.length
 ) => {
+  console.log("in max heapify", heapLength);
   const leftChildIndex = getLeftChildIndex(i);
   const rightChildIndex = getRightChildIndex(i);
 
   let largest;
+  let result;
 
-  if (leftChildIndex <= heapLength && array[leftChildIndex] > array[i]) {
+  if (leftChildIndex < heapLength && array[leftChildIndex] > array[i]) {
     largest = leftChildIndex;
   } else {
     largest = i;
   }
 
-  if (rightChildIndex <= heapLength && array[rightChildIndex] > array[i]) {
+  if (rightChildIndex < heapLength && array[rightChildIndex] > array[largest]) {
     largest = rightChildIndex;
   }
 
   if (largest !== i) {
-    // exchange array[i] with array[largest].
     const temp = array[i];
     array[i] = array[largest];
     array[largest] = temp;
 
-    maxHeapify(array, largest);
+    result = maxHeapify(array, largest, heapLength);
+
+    return result;
+  } else {
+    return array;
   }
 };
 
@@ -44,7 +49,7 @@ export const maxHeapify = (
  */
 
 export const buildMaxHeap = (array: number[]) => {
-  for (let i = array.length / 2; i >= 0; i--) {
+  for (let i = Math.floor(array.length / 2); i >= 0; i--) {
     maxHeapify(array, i);
   }
 
@@ -52,11 +57,16 @@ export const buildMaxHeap = (array: number[]) => {
 };
 
 export const heapSort = (array: number[]): number[] => {
-  const maxHeapArray = buildMaxHeap(array);
+  let maxHeapArray = buildMaxHeap(array);
   let maxHeapLength = maxHeapArray.length;
 
-  for (let i = maxHeapArray.length; i >= 1; i--) {
-    maxHeapify(maxHeapArray, 1, maxHeapLength--);
+  for (let i = maxHeapArray.length - 1; i >= 1; i--) {
+    const temp = maxHeapArray[i];
+    maxHeapArray[i] = maxHeapArray[0];
+    maxHeapArray[0] = temp;
+
+    maxHeapLength--;
+    maxHeapify(maxHeapArray, 0, maxHeapLength);
   }
 
   return maxHeapArray;
