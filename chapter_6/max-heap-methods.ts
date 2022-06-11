@@ -2,6 +2,8 @@ export const getLeftChildIndex = (i: number) => 2 * i + 1;
 
 export const getRightChildIndex = (i: number) => 2 * i + 2;
 
+export const getParentIndex = (i: number) => Math.floor(i / 2);
+
 /**
  * This runs in O log n time (also O of h) and is the key to maintaining the max heap property.
  * This lets the value at array[i] "float down" if it's less than its children, to
@@ -70,4 +72,46 @@ export const heapSort = (array: number[]): number[] => {
   }
 
   return maxHeapArray;
+};
+
+export const getHeapMaximum = (array: number[]): number => array[0];
+
+// for priority queue. O log n runtime.
+export const extractHeapMaximum = (array: number[]): number => {
+  if (array.length === 0) {
+    throw new Error("heap underflow");
+  }
+
+  const max = array[0];
+  array[0] = array[array.length - 1];
+  const newHeapLength = array.length - 1;
+  maxHeapify(array, 0, newHeapLength);
+  return max;
+};
+
+export const heapIncreaseKey = (
+  array: number[],
+  i: number,
+  key: number
+): void => {
+  if (key < array[i]) {
+    throw new Error("New key is smaller than current key");
+  }
+
+  array[i] = key;
+
+  // since we may be violating max heap rules, we need to put this item in its correct place.
+  let parentIndex = getParentIndex(i);
+
+  while (i > 0 && array[parentIndex] < array[i]) {
+    const temp = array[i];
+    array[i] = array[parentIndex];
+    array[parentIndex] = temp;
+    i = parentIndex;
+  }
+};
+
+export const maxHeapInsert = (array: number[], key: number): void => {
+  array.push(Number.NEGATIVE_INFINITY);
+  heapIncreaseKey(array, array.length - 1, key);
 };
