@@ -1,43 +1,60 @@
+// Note, I renamed the variables because in the textbook they are named quite poorly.
+// I erred on the side of being verbose but clear.
+// I also am starting at the beginning here rather than at the end like in the textbook.
+
+/**
+ * The steps this partition helper follows:
+ *
+ * 1. It sets the value we are using as a pivot to be the starting index.
+ * 2. (trivial note) it defines a swap method that swaps two values in an array.
+ * 3. It creates a tracker index to keep track of how many items have been moved to the right
+ * but in fact should be to the left of the pivot at the end.
+ * 3. It iterates over all items to the right of the pivot. If they're less than the pivot,
+ * it temporarily stacks them up just to the right of the pivot, and increments the tracker to know
+ * where this stack ends.
+ * 4. At the end, it swaps the pivot value with the last value that was less than the pivot.
+ *
+ * We now know that the pivot value is in its correct place; everything to the left is less, everything to the right
+ * is greater.
+ *
+ * We can then use this recursively on the left and right sides to finish sorting.
+ *
+ */
 export const partitionArray = (
   array: number[],
-  p: number,
-  r: number
+  startIndex: number,
+  endIndex: number
 ): number => {
-  // this pivots around a number. It returns the index of a pivot.
-  // it is pivoting around the last element
+  const pivotValue = array[startIndex];
+  let swapIndex = startIndex;
 
-  const pivot = array[r]; // this is called X in the textbook.
+  const swap = (a: number, b: number) => {
+    const temp = array[a];
+    array[a] = array[b];
+    array[b] = temp;
+  };
 
-  // this is the tracker to determine where to swap at the end.
-  // we start by moving everything less than pivot to the right of pivot.
-  // then at the end we swap the pivot with the last item less than.
-  // so we know everything less than that is on the left side then.
-  let i = p - 1;
-
-  for (let j = p; j < r; j++) {
-    if (array[j] <= pivot) {
-      i++;
-      const temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
+  for (let i = startIndex + 1; i <= endIndex; i++) {
+    if (array[i] < pivotValue) {
+      swapIndex++;
+      swap(i, swapIndex);
     }
   }
 
-  const temp = array[i + 1];
-  array[i + 1] = array[r];
-  array[r] = temp;
-  return i + 1;
+  swap(startIndex, swapIndex);
+
+  return swapIndex;
 };
 
 export const quickSort = (
   array: number[],
-  p: number = 0,
-  r: number = array.length - 1
+  startIndex: number = 0,
+  endIndex: number = array.length - 1
 ): number[] => {
-  if (p < r) {
-    const q = partitionArray(array, p, r);
-    array = quickSort(array, p, q - 1);
-    array = quickSort(array, q + 1, r);
+  if (startIndex < endIndex) {
+    const pivotIndex = partitionArray(array, startIndex, endIndex);
+    array = quickSort(array, startIndex, pivotIndex - 1);
+    array = quickSort(array, pivotIndex + 1, endIndex);
   }
 
   return array;
