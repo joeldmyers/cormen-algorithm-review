@@ -32,7 +32,6 @@ export const radixSort = (nums: number[]): number[] => {
       digitBuckets[digit].push(num);
     }
 
-    console.log(digitBuckets);
     nums = ([] as number[]).concat(...digitBuckets);
   }
 
