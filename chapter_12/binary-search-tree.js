@@ -4,10 +4,11 @@
 // I'm actually also just reviewing this quickly from my other repo on BST
 
 class BSTNode {
-  constructor(value) {
+  constructor(value, parent = null) {
     this.value = value;
     this.left = null;
     this.right = null;
+    this.parent =  parent;
   }
 }
 
@@ -21,12 +22,14 @@ class BinarySearchTree {
       this.root = new BSTNode(value);
     } else {
       let currentNode = this.root;
+      let currentParent = null;
 
       let done = false;
       while (!done) {
+        currentParent = currentNode;
         if (value < currentNode.value) {
           if (!currentNode.left) {
-            currentNode.left = new BSTNode(value);
+            currentNode.left = new BSTNode(value, currentParent));
             done = true;
           } else {
             currentNode = currentNode.left;
@@ -152,4 +155,5 @@ class BinarySearchTree {
     }
     return node;
   }
+
 }
