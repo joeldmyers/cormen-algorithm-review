@@ -66,6 +66,16 @@ class BinarySearchTree {
     return currentNode;
   }
 
+  findRecursive(node = this.root, value) {
+    if (!node?.value) return null;
+    if (node.value === value) return node;
+    if (value < node.value) {
+      return this.findRecursive(node.left);
+    } else {
+      this.findRecursive(node.right);
+    }
+  }
+
   BFS() {
     let result = [];
     let queue = [];
@@ -127,5 +137,19 @@ class BinarySearchTree {
     traverse(this.root);
 
     return result;
+  }
+
+  findMinimum(node = this.root) {
+    while (node.left !== null) {
+      node = node.left;
+    }
+    return node;
+  }
+
+  findMaximum(node = this.root) {
+    while (node.right !== null) {
+      node = node.right;
+    }
+    return node;
   }
 }
