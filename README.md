@@ -14,16 +14,28 @@ You may run tests by running `npm run test`
 
 ## Chapter Details / Algorithm Implementations / Tests / Notes
 
-[Chapter 1 - Introduction](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_1)
+[Chapter 1 - Introduction](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_01)
 
-[Chapter 2 - Binary Search, Insertion Sort, Merge Sort, Selection Sort](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_2)
+[Chapter 2 - Binary Search, Insertion Sort, Merge Sort, Selection Sort](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_02)
 
-[Chapter 3 - Big O Explanation](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_3)
+[Chapter 3 - Big O Explanation](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_03)
 
-[Chapter 4 - Matrix Multiplication, Max Subarray Brute Force and Linear (Kadane's Algorithm)](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_4)
+[Chapter 4 - Matrix Multiplication, Max Subarray Brute Force and Linear (Kadane's Algorithm)](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_04)
 
-[Chapter 5 - Probability Analysis of Random Algorithms - Hiring Problem](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_5)
+[Chapter 5 - Probability Analysis of Random Algorithms - Hiring Problem](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_05)
 
-[Chapter 6 - Max Heap, Min Heap, Priority Queue](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_6)
+[Chapter 6 - Max Heap, Min Heap, Priority Queue](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_06)
 
-[Chapter 7 - Quick Sort](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_7)
+[Chapter 7 - Quick Sort](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_07)
+
+[Chapter 8 - Sorting in Linear Time - Counting Sort and Radix Sort](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_08)
+
+[Chapter 9 - Medians and Order Statistics - Quick Select](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_09)
+
+[Chapter 10 - Stacks, Queues, and Linked Lists](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_10)
+
+[Chapter 11 - Hash Tables](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_10)
+
+[Chapter 12 - Binary Search Tree](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_12)
+
+[Chapter 13 - Red-Black Trees](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_13)
