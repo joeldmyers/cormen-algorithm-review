@@ -1,6 +1,6 @@
 # cormen-algorithm-review
 
-Review of CLRS.
+Review of [CLRS](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_5?crid=1C68A4GUG6GMH&keywords=clrs&qid=1658133407&sprefix=clrs%2Caps%2C265&sr=8-5).
 
 ## Getting started
 
