@@ -13,3 +13,5 @@ A red-black tree must satisfy the following properties:
 3. Every leaf (nil / null) is black
 4. If a node is red, then both its children are black.
 5. For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
+
+We call the number of black nodes on any simple path from, but not including, a node x down to a leaf the **black-height** of the node. We define the black-height of a red-black tree to be the black-height of its root.
