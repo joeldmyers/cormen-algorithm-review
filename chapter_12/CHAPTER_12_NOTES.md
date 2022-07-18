@@ -1,4 +1,4 @@
-# # Binary Search Trees
+# Binary Search Trees
 
 Binary Search Tree supports many operations, including search, min, max, predecessor, successor, insert and delete. So it can be used as both a dictionary and a priority queue.
 
