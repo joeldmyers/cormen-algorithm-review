@@ -61,3 +61,7 @@ if (y.parent === nil) {
 x.right = y
 y.parent = x
 ```
+
+## Note for when to use compared to AVL trees
+
+AVL trees are more balanced compared to red-black trees, but they cause more rotations during insertion and deletion. If we expect a lot of insertion and deletion, red-black trees are preferred. If it slants more toward search, then AVL trees are preferred.
