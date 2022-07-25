@@ -149,9 +149,23 @@ class BinarySearchTree {
     return node;
   }
 
+  findMinimumRecursive(node = this.root) {
+    if (node.left !== null) {
+      return this.findMinimumRecursive(node.left);
+    }
+    return node;
+  }
+
   findMaximum(node = this.root) {
     while (node.right !== null) {
       node = node.right;
+    }
+    return node;
+  }
+
+  findMaximumRecursive(node = this.root) {
+    if (node.right !== null) {
+      return this.findMaximumRecursive(node.right);
     }
     return node;
   }
@@ -161,8 +175,20 @@ class BinarySearchTree {
       return this.findMinimum(currentNode.right);
     }
     let higherNode = currentNode.parent;
-    while (higherNode !== null && currentNode === y.right) {
+    while (higherNode !== null && currentNode === higherNode.right) {
       // if the (original) currentNode is the right child of the parent, keep going up
+      currentNode = higherNode;
+      higherNode = higherNode.parent;
+    }
+    return higherNode;
+  }
+
+  findPredecessor(currentNode) {
+    if (currentNode.left !== null) {
+      return this.findMaximum(currentNode.left);
+    }
+    let higherNode = currentNode.parent;
+    while (higherNode !== null && currentNode === higherNode.left) {
       currentNode = higherNode;
       higherNode = higherNode.parent;
     }
