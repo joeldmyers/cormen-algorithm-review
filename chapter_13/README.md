@@ -16,6 +16,25 @@ A red-black tree must satisfy the following properties:
 
 We call the number of black nodes on any simple path from, but not including, a node x down to a leaf the **black-height** of the node. We define the black-height of a red-black tree to be the black-height of its root.
 
+## Insertion
+
+1. Insert node x, similar to BST. Essentially search for a null in the right place and create a new node.
+2. Assign the color red to it.
+3. If it's the root node, change its color to black.
+4. If not, check color of parent node. If parent node is black, leave it alone.
+5. If parent node is red, check the color of the node's uncle.
+
+- If the node's uncle is red (this means the uncle's parent is black), change node's parent and uncle to black, and change grandparent's color to red. set x to be the x and repeat steps for new x.
+
+6. If x's uncle is BLACK, then there are 4 configurations for x:
+
+- Left left case (p is left child of g and x is left child of p)
+- Left right case (p is left child of g and x is right child of p)
+- Right left case (p is right child of g and x is left child of p)
+- Right right case (p is right child of g and x is right child of p)
+
+More info here > https://www.geeksforgeeks.org/red-black-tree-set-2-insert/
+
 ## Modifying / Rotations
 
 When we insert/delete here, we may violate the above rules. So we may have to do a rotation. Here is the pseudocode for rotations:

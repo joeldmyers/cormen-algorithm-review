@@ -156,4 +156,16 @@ class BinarySearchTree {
     return node;
   }
 
+  findSuccessor(currentNode) {
+    if (currentNode.right !== null) {
+      return this.findMinimum(currentNode.right);
+    }
+    let higherNode = currentNode.parent;
+    while (higherNode !== null && currentNode === y.right) {
+      // if the (original) currentNode is the right child of the parent, keep going up
+      currentNode = higherNode;
+      higherNode = higherNode.parent;
+    }
+    return higherNode;
+  }
 }
