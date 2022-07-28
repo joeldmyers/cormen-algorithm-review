@@ -6,7 +6,14 @@ class RedBlackTreeNode {
     this.right = null;
     this.color = "R"; // "R" or "B"
   }
+}
 
+Class RedBlackTree {
+
+  constructor() {
+    this.root = null;
+  }
+  
   /**
    * Local operation to preserve binary-search-tree property and the red-black tree constraints
    * When we do a left rotation on a node localRoot, we assume its right child is not null.
@@ -77,4 +84,7 @@ class RedBlackTreeNode {
     // which is now the new local root.
     originalLocalRoot.parent = firstLocalLeftNode;
   }
+
+  // log n time
+  insertion(complete)
 }
