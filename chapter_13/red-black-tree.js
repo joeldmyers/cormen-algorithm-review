@@ -121,6 +121,7 @@ class RedBlackTree {
      */
     this.rbInsertFixup(newNode);
   }
+
   rbInsertFixup(currentNode) {
     while (currentNode.parent.color === "RED") {
       // if the current node's parent is the left node of its (the current node's parent's) parent
