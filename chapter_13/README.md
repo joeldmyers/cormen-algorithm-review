@@ -81,6 +81,10 @@ x.right = y
 y.parent = x
 ```
 
+## Notes on insert fixup
+
+The fixup fixes when the tree violates any rule; in practice this is just rule 2 (root has to be black), and rule 4 (a node and its parent can't both be red). It's important to note that the current node (node being inserted) is always red.
+
 ## Note for when to use compared to AVL trees
 
 AVL trees are more balanced compared to red-black trees, but they cause more rotations during insertion and deletion. If we expect a lot of insertion and deletion, red-black trees are preferred. If it slants more toward search, then AVL trees are preferred.
