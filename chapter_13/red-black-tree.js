@@ -52,7 +52,7 @@ class RedBlackTree {
   }
 
   // This assumes that there is an originalLocalRoot.left
-  rightRotation(originalLocalRoot) {
+  rightRotate(originalLocalRoot) {
     // This will become the new local root
     const firstLocalLeftNode = originalLocalRoot.left;
     // Make the first local left node's subtree the right subtree
@@ -234,7 +234,7 @@ class RedBlackTree {
         } else if (w.right.color === "BLACK") {
           w.left.color = "BLACK";
           w.color = "RED";
-          this.rightRotation(w);
+          this.rightRotate(w);
           w = nodeReplacingNodeToDelete.parent.right;
         }
         w.color = nodeReplacingNodeToDelete.parent.color;
@@ -264,7 +264,7 @@ class RedBlackTree {
         w.color = nodeReplacingNodeToDelete.parent.color;
         nodeReplacingNodeToDelete.parent.color = "BLACK";
         w.left.color = "BLACK";
-        this.rightRotation(nodeReplacingNodeToDelete.parent);
+        this.rightRotate(nodeReplacingNodeToDelete.parent);
         nodeReplacingNodeToDelete = this.root;
       }
     }
