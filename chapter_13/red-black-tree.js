@@ -122,6 +122,13 @@ class RedBlackTree {
     this.rbInsertFixup(newNode);
   }
 
+  findMinimum(node = this.root) {
+    while (node.left !== null) {
+      node = node.left;
+    }
+    return node;
+  }
+
   rbInsertFixup(currentNode) {
     while (currentNode.parent.color === "RED") {
       // if the current node's parent is the left node of its (the current node's parent's) parent
@@ -159,6 +166,107 @@ class RedBlackTree {
         }
       }
       this.root.color = black;
+    }
+  }
+
+  rbTransplant(node1, node2) {
+    if (node1.parent === null) {
+      this.root = node2;
+    } else if (node1 === node1.parent.left) {
+      node1.parent.left = node2;
+    } else {
+      node1.parent.right = node2;
+    }
+    node2.parent = node1.parent;
+  }
+
+  rbDelete(nodeToDelete) {
+    let currentNode = nodeToDelete;
+    let currentNodeOriginalColor = currentNode.color;
+    let nodeReplacingNodeToDelete;
+
+    if (nodeToDelete.left === null) {
+      nodeReplacingNodeToDelete = nodeToDelete.right;
+      this.rbTransplant(nodeToDelete, nodeToDelete.right);
+    } else if (nodeToDelete.right === null) {
+      nodeReplacingNodeToDelete = nodeToDelete.left;
+      this.rbTransplant(nodeToDelete, nodeToDelete.left);
+    } else {
+      currentNode = this.findMinimum(nodeToDelete.right);
+      currentNodeOriginalColor = currentNode.color;
+      nodeReplacingNodeToDelete = currentNode.right;
+      if (currentNode.parent === nodeToDelete) {
+        nodeReplacingNodeToDelete.parent = currentNode;
+      } else {
+        this.rbTransplant(currentNode, currentNode.right);
+        currentNode.right = nodeToDelete.right;
+        currentNode.right.parent = currentNode;
+      }
+      this.rbTransplant(nodeToDelete, currentNode);
+      currentNode.left = nodeToDelete.left;
+      currentNode.left.parent = currentNode;
+      currentNode.color = nodeToDelete.color;
+    }
+
+    if (currentNodeOriginalColor === "BLACK") {
+      this.rbDeleteFixup(nodeReplacingNodeToDelete);
+    }
+  }
+
+  rbDeleteFixup(nodeReplacingNodeToDelete) {
+    while (
+      nodeReplacingNodeToDelete !== this.root &&
+      nodeReplacingNodeToDelete.color === "BLACK"
+    ) {
+      if (nodeReplacingNodeToDelete === node.parent.left) {
+        let w = nodeReplacingNodeToDelete.parent.right;
+
+        if (w.color === "RED") {
+          w.color = "BLACK";
+          nodeReplacingNodeToDelete.parent.color = "RED";
+          this.leftRotate(nodeReplacingNodeToDelete.parent);
+          w = nodeReplacingNodeToDelete.parent.right;
+        }
+
+        if (w.left.color === "BLACK" && w.right.color === "BLACK") {
+          w.color = "RED";
+          nodeReplacingNodeToDelete = nodeReplacingNodeToDelete.parent;
+        } else if (w.right.color === "BLACK") {
+          w.left.color = "BLACK";
+          w.color = "RED";
+          this.rightRotation(w);
+          w = nodeReplacingNodeToDelete.parent.right;
+        }
+        w.color = nodeReplacingNodeToDelete.parent.color;
+        nodeReplacingNodeToDelete.parent.color = "BLACK";
+        w.right.color = "BLACK";
+        this.leftRotate(nodeReplacingNodeToDelete.parent);
+        nodeReplacingNodeToDelete = this.root;
+      } else {
+        let w = nodeReplacingNodeToDelete.parent.left;
+
+        if (w.color === "RED") {
+          w.color = "BLACK";
+          nodeReplacingNodeToDelete.parent.color = "RED";
+          this.rightRotate(nodeReplacingNodeToDelete.parent);
+          w = nodeReplacingNodeToDelete.parent.left;
+        }
+
+        if (w.right.color === "BLACK" && w.left.color === "BLACK") {
+          w.color = "RED";
+          nodeReplacingNodeToDelete = nodeReplacingNodeToDelete.parent;
+        } else if (w.left.color === "BLACK") {
+          w.right.color = "BLACK";
+          w.color = "RED";
+          this.leftRotate(w);
+          w = nodeReplacingNodeToDelete.parent.left;
+        }
+        w.color = nodeReplacingNodeToDelete.parent.color;
+        nodeReplacingNodeToDelete.parent.color = "BLACK";
+        w.left.color = "BLACK";
+        this.rightRotation(nodeReplacingNodeToDelete.parent);
+        nodeReplacingNodeToDelete = this.root;
+      }
     }
   }
 }

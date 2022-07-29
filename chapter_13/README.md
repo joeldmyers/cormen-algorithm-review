@@ -85,6 +85,10 @@ y.parent = x
 
 The fixup fixes when the tree violates any rule; in practice this is just rule 2 (root has to be black), and rule 4 (a node and its parent can't both be red). It's important to note that the current node (node being inserted) is always red.
 
+## Deletion
+
+Deleting a node is like deleting a node in a BST, but we have to make sure not to violate the rules of red-black trees.
+
 ## Note for when to use compared to AVL trees
 
 AVL trees are more balanced compared to red-black trees, but they cause more rotations during insertion and deletion. If we expect a lot of insertion and deletion, red-black trees are preferred. If it slants more toward search, then AVL trees are preferred.
