@@ -39,3 +39,7 @@ You may run tests by running `npm run test`
 [Chapter 12 - Binary Search Tree](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_12)
 
 [Chapter 13 - Red-Black Trees](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_13)
+
+[Chapter 14 - Augmenting Data Structures](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_14)
+
+[Chapter 13 - Dynamic Programming](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_15)
