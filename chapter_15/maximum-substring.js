@@ -1,6 +1,5 @@
 const longestCommonSubsequence = function (text1, text2) {
   let dpGrid = [];
-  let max;
 
   for (let i = 0; i <= text1.length; i++) {
     dpGrid.push(new Array(text2.length + 1).fill(0));
