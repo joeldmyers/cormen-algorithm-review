@@ -43,3 +43,5 @@ You may run tests by running `npm run test`
 [Chapter 14 - Augmenting Data Structures](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_14)
 
 [Chapter 15 - Dynamic Programming](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_15)
+
+[Chapter 16 - Greedy Algorithms](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_16)
