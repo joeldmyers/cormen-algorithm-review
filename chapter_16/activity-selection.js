@@ -11,12 +11,13 @@
  * @param {number[]} startTimes
  * @param {number[]} finishTimes
  */
-const greedyActivitySelector = (startTimes, finishTimes) => {
-  // start with the first one.
+export const greedyActivitySelector = (startTimes, finishTimes) => {
+  // start with the first one, since we have stated in the problem
+  // that it's sorted by the event that finishes first.
   const result = [0];
   let indexOfMostRecentAdditionToA = 0;
 
-  for (let i = 1; i < s.length; i++) {
+  for (let i = 1; i < startTimes.length; i++) {
     if (startTimes[i] >= finishTimes[indexOfMostRecentAdditionToA]) {
       result.push(i);
       indexOfMostRecentAdditionToA = i;
