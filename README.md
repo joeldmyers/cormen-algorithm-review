@@ -45,3 +45,5 @@ You may run tests by running `npm run test`
 [Chapter 15 - Dynamic Programming](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_15)
 
 [Chapter 16 - Greedy Algorithms](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_16)
+
+[Chapter 17 - Amortized Analysis](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_17)
