@@ -36,7 +36,9 @@ The simplest B-tree is when t = 2. Every internal node has either 2, 3, or 4 chi
 
 ## Operations we want to support
 
-- Search: like binary search tree, except instead of making a binary or two-way branching decision at each node, we make a multi-way branching decision. bTreeSearch takes a pointer to the root node of a subtree and a key to be searched for. So it's bTreeSearch(T.root, k). If it finds it, it returns [y, i], which is a node y and an index i, such that y.key[i] = k. Otherwise it returns null.
+### Search
+
+Like binary search tree, except instead of making a binary or two-way branching decision at each node, we make a multi-way branching decision. bTreeSearch takes a pointer to the root node of a subtree and a key to be searched for. So it's bTreeSearch(T.root, k). If it finds it, it returns [y, i], which is a node y and an index i, such that y.key[i] = k. Otherwise it returns null.
 
 ```
 const bTreeSearch = (node, target) => {
@@ -61,3 +63,25 @@ This uses a linear search procedure to find the smallest index i so that k <= x.
 It returns it if it finds it. If x is a leaf say we didn't find it.
 
 Otherwise, do a disk read on x.c[i] and then recursively call bTreeSearch on it.
+
+### Create an empty B-tree
+
+```
+const bTreeCreate = (T) => {
+  const x = allocateNode(0);
+
+  x.leaf = true;
+
+  x.n = 0;
+  diskWrite(x);
+  T.root = x;
+  }
+```
+
+### Inserting a key into a B-tree
+
+We have to figure out where to insert it. We also have to make sure to maintain the b-tree properties. To do this, we will have to split a full node (in the event that it's full and we want to insert into it) around its median key, into two nodes having only t - 1 keys each.
+
+### Splitting a node in a B-tree
+
+[left off on p. 494].
