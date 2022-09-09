@@ -47,3 +47,5 @@ You may run tests by running `npm run test`
 [Chapter 16 - Greedy Algorithms](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_16)
 
 [Chapter 17 - Amortized Analysis](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_17)
+
+[Chapter 18 - B-Trees](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_18)
