@@ -33,3 +33,31 @@ A B-tree T is a rooted tree with the following properties:
 5. Nodes have lower and upper bounds on the number of keys they can contain. This min can be t >= 2; called **minimum degree** of the B tree. Every node other than the root must have t - 1 keys. Every internal node other than the root thus has at least t children. If the tree is non-empty, the root must have at least 1 key. Also, every node may contain **at most 2t - 1 keys**. An internal node can thus have at most 2t children. We say a node is **full** if it contains exactly 2t - 1 keys. Obviously for this, we'll have to do some work to maintain this property.
 
 The simplest B-tree is when t = 2. Every internal node has either 2, 3, or 4 children, and we have a **2-3-4 tree**. In practice, though, as mentioned above, much larger values of t are used.
+
+## Operations we want to support
+
+- Search: like binary search tree, except instead of making a binary or two-way branching decision at each node, we make a multi-way branching decision. bTreeSearch takes a pointer to the root node of a subtree and a key to be searched for. So it's bTreeSearch(T.root, k). If it finds it, it returns [y, i], which is a node y and an index i, such that y.key[i] = k. Otherwise it returns null.
+
+```
+const bTreeSearch = (node, target) => {
+  let i = 0;
+
+  while (i <= x.n && k > x.key[i]) {
+    i++;
+  }
+
+  if (i <= x.n && k === x.key[i]) {
+    return [x, i];
+  } else if (x.leaf) return null;
+  else {
+    diskRead(x.c[i]);
+      return bTreaSearch(x.c[i], k);
+  }
+}
+```
+
+This uses a linear search procedure to find the smallest index i so that k <= x.key[i].
+
+It returns it if it finds it. If x is a leaf say we didn't find it.
+
+Otherwise, do a disk read on x.c[i] and then recursively call bTreeSearch on it.
