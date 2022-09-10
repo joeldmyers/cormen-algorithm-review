@@ -85,3 +85,89 @@ We have to figure out where to insert it. We also have to make sure to maintain 
 ### Splitting a node in a B-tree
 
 ![IMG_3491](https://user-images.githubusercontent.com/4838984/189504026-8890f219-f929-44f4-b1bb-1050a5b697f9.jpg)
+
+```
+const bTreeSplitChild = (x, i) => {
+  const z = allocateNode();
+  const y = x.c[i];
+  z.leaf = y.leaf;
+  z.n = t - 1;
+  for (let j = 1; j < t; j++) {
+    z.key[j] = y.key[j + t]
+  }
+
+  if (!y.leaf) {
+    for (let j = 1; j <= t; j++) {
+      z.c[j] = y.c[j + t];
+    }
+  }
+
+  y.n = t - 1;
+
+  for (let j = x.n + 1; j > i; j--) {
+    x.c[j + 1] = x.c[j];
+  }
+
+  x.key[i] = y.key[t];
+  x.n++;
+  diskWrite(y);
+  diskWrite(z);
+  diskWrite(x);
+}
+```
+
+Intuitively, x is the parent of the node being split. y is x's ith child. node y originally has 2t children, but is reduced to t children by this operation. node z is the new node; it takes the t largest children from y, and it becomes a new child of x. the median of y moves up to become the key in x that separates y and z.
+
+### Inserting a key in a B tree in a single pass down the tree
+
+```
+const bTreeInsert = (T, k) => {
+  const root = T.root;
+
+  if (root.n === 2t - 1) {
+    const s = allocateNode();
+    T.root = s;
+    s.leaf = false;
+    s.n = 0;
+    s.c[1] = r;
+    bTreeSplitCild(s, 1);
+    bTreeInsertNonfull(s, k);
+  }
+  else {
+    bTreeInsertNonFull(r, k)
+  }
+}
+```
+
+Last method needed:
+
+```
+const bTreeInsertNonFull = (x, k) => {
+  const i = x.n;
+  if (x.leaf) {
+    while (i >= 1 && k < x.key) {
+      x.key[i + 1] = x.key[i];
+      i--;
+    }
+
+    x.key[i + 1] = k;
+    x.n++
+    diskWrite(x);
+  }
+  else {
+    while (i >= 1 && k < x.key[i]) {
+      i--;
+    }
+    i++;
+    diskRead(x.c[i]);
+    if(x.c[i].n === 2t - 1) {
+      bTreeSplitChild(x, i);
+
+      if (k > x.key[i]) {
+        i++;
+      }
+      bTreeInsertNonFull(x.c[i], k);
+    }
+  }
+}
+```
