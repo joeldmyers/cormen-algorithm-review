@@ -41,7 +41,7 @@ The simplest B-tree is when t = 2. Every internal node has either 2, 3, or 4 chi
 Like binary search tree, except instead of making a binary or two-way branching decision at each node, we make a multi-way branching decision. bTreeSearch takes a pointer to the root node of a subtree and a key to be searched for. So it's bTreeSearch(T.root, k). If it finds it, it returns [y, i], which is a node y and an index i, such that y.key[i] = k. Otherwise it returns null.
 
 ```
-const bTreeSearch = (node, target) => {
+const bTreeSearch = (x, target) => {
   let i = 0;
 
   while (i <= x.n && k > x.key[i]) {
@@ -84,4 +84,4 @@ We have to figure out where to insert it. We also have to make sure to maintain 
 
 ### Splitting a node in a B-tree
 
-[left off on p. 494].
+![IMG_3491](https://user-images.githubusercontent.com/4838984/189504026-8890f219-f929-44f4-b1bb-1050a5b697f9.jpg)
