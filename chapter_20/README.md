@@ -8,4 +8,4 @@ One part of the approach is to have a tree of degree of the square root of u, wh
 
 The book starts with a proto-van Emde Boas tree and then relaxes some of the constraints. Specifically, it allows u (the max number, or universe of numbers) to be a power of 2, not 2 ^ (2 ^ n).
 
-Note that it takse Theta (u) time to instantiate a van Emde Boas tree, whereas a red-black tree takes constant time. So with fewer operations, RB tree is better.
+Note that it takes Theta (u) time to instantiate a van Emde Boas tree, whereas a red-black tree takes constant time. So with fewer operations, RB tree is better.
