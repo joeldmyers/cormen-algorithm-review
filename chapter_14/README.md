@@ -9,6 +9,6 @@
 
 ## Interval tree
 
-Interval tree is a red-black tree that instead of maintaining numbers, maintains an interval (e.g., [9, 15]) for each node.
+Interval tree is a red-black tree (or just normal BST) that instead of maintaining numbers, maintains an interval (e.g., [9, 15]) for each node.
 
 Intervals are sorted by the low endpoint.

@@ -9,3 +9,28 @@ We want to support the following operations:
 - union(x, y) - unites the dynamic sets that contain x and y, into a new set that's the union of the sets that contained x and y.
 
 - findSet(x) - returns a pointer to the representative of the (unique) set containing x.
+
+## Applications of Disjoint Sets
+
+- Determining connected components of an undirected graph is one example.
+
+For a graph G:
+
+```
+const connectedComponents = (G) => {
+  for (const vertex of G.vertices) {
+    makeSet(vertex);
+  }
+
+  for (const {u, v} of G.edges) {
+    if (findSet(u !== findSet(v)) {
+      union(u, v);
+    }
+  }
+}
+
+const sameComponent = (u, v) => {
+  return findSet(u) === findSet(v);
+}
+
+```
