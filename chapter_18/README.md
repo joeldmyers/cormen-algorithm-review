@@ -171,3 +171,7 @@ const bTreeInsertNonFull = (x, k) => {
   }
 }
 ```
+
+### Deleting a key
+
+We have to be careful to maintain the constraint of at least t - 1 keys in a node.
