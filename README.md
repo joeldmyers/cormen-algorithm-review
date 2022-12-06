@@ -55,3 +55,5 @@ You may run tests by running `npm run test`
 [Chapter 18 - Van Emde Boas Trees](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_20)
 
 [Chapter 21 - Data Structures for Disjoint Sets](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_21)
+
+[Chapter 22 - Elementary Graph Algorithms](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_22)
