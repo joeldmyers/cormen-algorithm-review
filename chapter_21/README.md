@@ -94,3 +94,7 @@ const findSet = x => {
   return x.p;
 }
 ```
+
+The above findSet is a **two-pass** method. As it recurses, it makes one pass up the find path to find the root, and as it "unwinds", it makes a second pass back down the find path to update each node to point directly to the root.
+
+With these improvements, it is essentially linear runtime. Strictly speaking though, it's n log n.
