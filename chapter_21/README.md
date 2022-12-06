@@ -42,3 +42,9 @@ Each set is represented by its own linked list. (Separate from Cormen I've done 
 With this, for makeSet(x) (making a brand new set with just x as the element) is easy - create a new linked list with just x in it.
 
 For findSet, we just follow the pointer back to its set object, and then return the member that the head points to.
+
+### A simple implementation of union
+
+For this linked list version, we perform Union(x, y) by appending y's list onto the end of x's list. The representative of x's list becomes the representative of the whole set.
+
+We have to update the pointer for each object in y's list after joining x's list. This takes linear time.
