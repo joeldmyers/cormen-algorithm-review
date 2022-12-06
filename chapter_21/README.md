@@ -49,8 +49,48 @@ For this linked list version, we perform Union(x, y) by appending y's list onto 
 
 We have to update the pointer for each object in y's list after joining x's list. This takes linear time.
 
-## Disjoint-set forests
+## Disjoint-set Forests
 
 We can implement disjoint sets faster by using rooted trees, with each node containing one member and each tree representing one set. The root of each tree contains the representative and is its own parent. While the straightforward algorithms used by this implementation are no faster than the linked-list implementation, we can improve it by using **union by rank** and **path compression**, which can give us an asymptotically optimal disjoint-set data structure.
 
 makeSet creates a tree with just one node. findSet follows parent pointers until we find the root of the tree. The nodes visited on this simple path toward the root constitute the **find path**. A union operation causes the root of one tree to point to the root of the other.
+
+There is a problem with this; the worst-case can still end up being a linked list - a tree that's just a linear chain of n nodes.
+
+The first is union by rank. We will maintain a rank for each node, which is an upper bound on the height of the node. In union by rank, we make the root with the smaller rank point to the root with the larger rank during a union operation.
+
+Path compression means that we basically point every node in the tree to the parent.
+
+### Rank
+
+When there's just one node, the tree has a rank of 0. If when merging two sets using the union method, they have unequal rank, we make the root with the higher rank the parent of the root with the lower rank, but the ranks themselves remain unchanged. If they have equal ranks, we arbrirarily choose one of the roots as the parent and increment its rank.
+
+```
+const makeSet = x => {
+  x.p = x;
+  x.rank = 0;
+}
+
+const union = (x, y) => {
+  link(findSet(x), findSet(y));
+}
+
+const link = (x, y) => {
+  if (x.rank > y.rank) y.p = x;
+  else {
+    x.p = y;
+    if (x.rank === y.rank) {
+      y.rank++;
+    }
+  }
+}
+
+const findSet = x => {
+  // if this isn't the root
+  if (x !== x.p) {
+    // find the root for this set.
+    x.p = findSet(x.p);
+  }
+  return x.p;
+}
+```
