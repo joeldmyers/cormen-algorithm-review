@@ -34,3 +34,11 @@ const sameComponent = (u, v) => {
 }
 
 ```
+
+## Linked List representation of disjoint sets
+
+Each set is represented by its own linked list. (Separate from Cormen I've done this using an array). The head is the first object in the list and the tail is the last. Each object in the list contains a set member, a pointer to the next object in the list, and a pointer back to the set object.
+
+With this, for makeSet(x) (making a brand new set with just x as the element) is easy - create a new linked list with just x in it.
+
+For findSet, we just follow the pointer back to its set object, and then return the member that the head points to.
