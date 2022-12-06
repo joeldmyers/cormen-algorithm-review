@@ -49,3 +49,9 @@ You may run tests by running `npm run test`
 [Chapter 17 - Amortized Analysis](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_17)
 
 [Chapter 18 - B-Trees](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_18)
+
+[Chapter 19 - Fibonacci Heaps](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_19)
+
+[Chapter 18 - Van Emde Boas Trees](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_20)
+
+[Chapter 21 - Data Structures for Disjoint Sets](https://github.com/joeldmyers/cormen-algorithm-review/blob/main/chapter_21)
