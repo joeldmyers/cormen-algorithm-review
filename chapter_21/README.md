@@ -48,3 +48,9 @@ For findSet, we just follow the pointer back to its set object, and then return 
 For this linked list version, we perform Union(x, y) by appending y's list onto the end of x's list. The representative of x's list becomes the representative of the whole set.
 
 We have to update the pointer for each object in y's list after joining x's list. This takes linear time.
+
+## Disjoint-set forests
+
+We can implement disjoint sets faster by using rooted trees, with each node containing one member and each tree representing one set. The root of each tree contains the representative and is its own parent. While the straightforward algorithms used by this implementation are no faster than the linked-list implementation, we can improve it by using **union by rank** and **path compression**, which can give us an asymptotically optimal disjoint-set data structure.
+
+makeSet creates a tree with just one node. findSet follows parent pointers until we find the root of the tree. The nodes visited on this simple path toward the root constitute the **find path**. A union operation causes the root of one tree to point to the root of the other.
