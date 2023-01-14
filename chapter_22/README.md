@@ -21,3 +21,5 @@ adjacencyList[someVertexA] = [{ node: someVertexB, weight: 5 }];
 ```
 
 The one down side is that with adjacency lists, the only way to know if an edge (u, v) is present in a graph is to search for v in the adjacency list u. An adjacency matrix makes this much easier, but at the cost of much more memory.
+
+An adjacency matrix requires Theta(V^2) memory.
