@@ -23,3 +23,59 @@ adjacencyList[someVertexA] = [{ node: someVertexB, weight: 5 }];
 The one down side is that with adjacency lists, the only way to know if an edge (u, v) is present in a graph is to search for v in the adjacency list u. An adjacency matrix makes this much easier, but at the cost of much more memory.
 
 An adjacency matrix requires Theta(V^2) memory.
+
+## Breadth-first search (BFS)
+
+Important for many graph algorithms. Prim's minimum-spanning tree algorithm, and Dijkstra's algorithm use ideas similar to BFS.
+
+Given a graph G and a distinguished source vertex s, BFS systematically explores the edges of G to "discover" every vertex reachable from s. It computes the distance from s to each reachable vertex. It also produces a "breadth-first tree" with root s that contains all reachable vertices. For any vertex v reachable from s, the simple path in the breadth-first tree from s to v corresponds to a "shortest path" from s to v in G -- that is, a path containing the smallest number of edges.
+
+BFS is so named because it expands the frontier between discovered and undiscovered vertices uniformly across the breadth of the frontier. That is, it discoveres all vertices at distance k from s before discovering any vertices at k + 1.
+
+CLRS uses gray and black to keep track. Black means all adjacent nodes have been visited. Gray means there are some unvisited nodes.
+
+The algorithm assumes we're using an adjacency list.
+
+d = distance.
+u = current node.
+pi = current node's predecessor.
+
+```
+const bfs = (G, s) => {
+  for (const currentVertex in G) {
+    currentVertex.color = white;
+    currentVertex.d = Number.INFINITY;
+    currentVertex.pi = nil
+  }
+
+  const queue = [s];
+
+  while (queue.length) {
+    const currentVertex = queue.shift();
+    for (const v of currentVertex.adjacencyList) {
+      if (v.color === white) {
+        // this color thing is in place of the more normal 'visited' notation
+        v.color = gray;
+        v.d = u.d + 1;
+        v.pi = u;
+        queue.push(v);
+      }
+    }
+    u.color = black;
+  }
+}
+```
+
+The first part "paints" every vertex white, sets each vertex's distance to infinity, and its predecessor (parent) to be nil.
+
+It then begins by painting the first node s gray, the distance from s to be 0 and its parent to be nil.
+
+It then initializes a queue (Q in the book) with the node s in it.
+
+The while loop then traverses the graph. It dequeues a single node, and then does a foreach over each of the nodes in its adjacency list. If the node's color is white, this sets it to gray. This is similar to other algorithms that use the concept of visited.
+
+Note that this algorithm doesn't actually store the results anywhere. Usually one might have a result array. There is an example of a more common way to do this in my code here: https://github.com/joeldmyers/data-structure-implementation-review/blob/main/graph/graph.ts
+
+This operation is O of (V + E)
+
+BFS can be used to get the shortest path in an unweighted graph.
