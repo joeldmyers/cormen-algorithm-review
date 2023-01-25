@@ -79,3 +79,5 @@ Note that this algorithm doesn't actually store the results anywhere. Usually on
 This operation is O of (V + E)
 
 BFS can be used to get the shortest path in an unweighted graph.
+
+The implementation above creates a breadth-first tree due to the predecessor linking.
