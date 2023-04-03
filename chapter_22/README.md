@@ -81,3 +81,62 @@ This operation is O of (V + E)
 BFS can be used to get the shortest path in an unweighted graph.
 
 The implementation above creates a breadth-first tree due to the predecessor linking.
+
+## Depth-first Search (DFS)
+
+This searches "deeper" in the graph whenever possible, and then backtracks and restarts the same process until it has discovered every vertex.
+
+Like with BFS, when DFS discoveres a vertex, it records a predecessor. In Cormen, they use colors, gray to indicate visited and black to indicate that all vertices in its adjacency list have been visited.
+
+Pseudocode here:
+
+```
+const dfs = (G) => {
+  for (const vertex in G.adjacencyList) {
+    vertex.color = 'WHITE';
+    // this was named pi in the book.
+    vertex.predecessor = null;
+  }
+
+  let time =0;
+
+  for (const vertex in G.adjacencyList) {
+    if (vertex.color === 'WHITE') {
+      dfsVisit(G, vertex);
+    }
+  }
+}
+
+const dfsVisit = (G, u) => {
+  time++;
+  // discovery time
+  u.d = time;
+  u.color = 'GRAY';
+
+  for (const v of G.adjacencyList[u]) {
+    if (v.color === 'WHITE') {
+      v.predecessor = u;
+      dfsVisit(G, v);
+    }
+  }
+
+  u.color = 'BLACK';
+  time++;
+  // finish time
+  u.f = time;
+}
+```
+
+Runtime is same as BFS: O of (V + E)
+
+### Classification of edges
+
+This can be used to classify edges of graph. This can be helpful. For example, a directed graph is acyclic if and only if a DFS yields no "back" edges. Below are the four edge types in terms of a DFS forest:
+
+1. Tree edges. Edges in the DFS forest G[predecessor]. This means a tree edge E(u, v) is a tree edge if v was first discovered by exploring the edge (u, v).
+
+2. Back edges - connecting a vertex u to an ancestor v in a depth-first tree. Self-loops are considered back edges.
+
+3. Forward edges. Non-tree edges connecting a vertex u to a descendant v in a depth-first tree.
+
+4. Cross edges are all other edges.
