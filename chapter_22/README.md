@@ -140,3 +140,11 @@ This can be used to classify edges of graph. This can be helpful. For example, a
 3. Forward edges. Non-tree edges connecting a vertex u to a descendant v in a depth-first tree.
 
 4. Cross edges are all other edges.
+
+The DFS algorithm above has information on this. When we first explore an edge, the color tells us something about that edge:
+
+1. White indicates a tree edge
+
+2. Gray indicates a back edge
+
+3. Black indicates a forward or cross edge.
