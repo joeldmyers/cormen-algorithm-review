@@ -1,6 +1,6 @@
-## Elementary Graph Algorithms
+# Elementary Graph Algorithms
 
-### Representations of graphs
+## Representations of graphs
 
 There are two ways to representa graph: a collection of adjacency lists or an adjacency matrix. (Note, separately from this Cormen review, I have an implementation for an unweighted adjacency list matrix [https://github.com/joeldmyers/data-structure-implementation-review/blob/main/graph/graph.ts](here)).
 
@@ -12,7 +12,7 @@ If G is a directed graph, the sum of the lengths of all the adjacency lists is |
 
 The memory requirements of an adjacency list matrix is Theta(V + E).
 
-### Weighted Graphs
+## Weighted Graphs
 
 We can store the weight in the adjacency list. For ex:
 
@@ -148,3 +148,21 @@ The DFS algorithm above has information on this. When we first explore an edge, 
 2. Gray indicates a back edge
 
 3. Black indicates a forward or cross edge.
+
+## Topological sort
+
+Definition: Topological sort of a dag (directed acyclic graph) G = (V, E) is a linear ordering of all its vertices such that if G contains an edge (u, v), then u appears before v in that ordering. If the graph contains a cycle, then no linear ordering is possible.
+
+This is a way of ordering certain things that need to happen before other certain things. Class prereqs are an example. The book uses clothes (socks must be put on before shoes).
+
+A directed edge (u, v) indicates that, in the clothing example above, garment u must be donned before garment v. The top sort of this dag therefore gives an order for getting dressed.
+
+The following is the algorithm for top sort:
+
+```
+const topologicalSort = (G) => {
+  // Call DFS(G) to compute finishing times v.f for each vertex v
+  // As each vertex is finished, insert it onto the front of a linked list.
+  // Return the linked list of vertices
+}
+```
