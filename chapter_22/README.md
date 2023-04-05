@@ -166,3 +166,18 @@ const topologicalSort = (G) => {
   // Return the linked list of vertices
 }
 ```
+
+## Strongly connected components
+
+A strongly connected component is a maximal set of vertices such that for every pair of vertices u and v, u and v are reachable from each other.
+
+The way to do this uses the transpose of graph G, which is G with all its edges reversed.
+
+```
+const stronglyConnectedComponents = (G) => {
+  dfs(G) // to compute finishing times for each vertex
+  GT = computeTransposedGraph(G)
+  dfs(GT) // but in the main loop of DFS, consider vertices in order of decreasing u.f
+  // output vertices of each tree in DFS forest formed in line 3 as a separate stronly connected component.
+}
+```
